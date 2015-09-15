@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mirandachen1992</title>
+    <description>陈泳瑾的博客</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 15 Sep 2015 16:27:51 +0800</pubDate>
+    <lastBuildDate>Tue, 15 Sep 2015 16:27:51 +0800</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>《编写高质量代码》（一）HTML、CSS 部分</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;开始说几句&lt;/h2&gt;
+&lt;p&gt;最近在看《编写高质量代码–Web前端开发修炼之道》(曹刘阳 著)，内容有点老了，但是中间有部分内容是我平时没有注意到或者没有深入理解的，所以用这两篇先总结一下个人觉得平时用的比较多又比较容易出错的部分。Smile ^_^~&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;css&quot;&gt;（一）CSS的命名&lt;/h3&gt;
+
+&lt;p&gt;css的命名一般有两种方式驼峰式timeList和划线式time-list/time_List。书中作者认为比较好的方法是：驼峰命名法用于区别不同单词，划线用于表明从属关系。如：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul class=&quot;timeList&quot;&amp;gt;
+  &amp;lt;li class=&quot;timeList-firstItem&quot;&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;li class=&quot;timeList-secondItem&quot;&amp;gt;&amp;lt;/li&amp;gt;
+  &amp;lt;li class=&quot;timeLIst-LastItem&quot;&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;classclass----&quot;&gt;（二）挂多个class还是新建class – 多用组合，少用继承&lt;/h3&gt;
+
+&lt;p&gt;加入我们想得到下图&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/css/pics/2015-8-29(1).PNG&quot; alt=&quot;2015-8-29(1)&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;方案一&lt;/strong&gt;：分别视为三种不同的类，代码冗余&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+  .numberList1{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList1 li{height: 20px; line-height: 20px; font-size: 12px;}
+  .numberList2{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList2 li{height: 20px; line-height: 20px; font-size: 16px;}
+  .numberList3{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList3 li{height: 20px; line-height: 20px; font-size: 12px; color: red;}
+&amp;lt;/style&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;ul class=&quot;numberList1&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList2&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList3&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;方案二&lt;/strong&gt;：与方案一的思路相同，只是想样式相同的部分提取出来&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+  .numberList1,.numberList2,.numberList3{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList1 li,.numberList2 li,.numberList3 li{height: 20px; line-height: 20px; font-size: 12px;}
+  .numberList2 li{font-size: 16px;}
+  .numberList3 li{font-size: 12px; color: red;}
+&amp;lt;/style&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;ul class=&quot;numberList1&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList2&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList3&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;方案三&lt;/strong&gt;:提取出更多粒度更小的类，通过类的组合实现&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+  .numberList{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList li{height: 20px; line-height: 20px}
+  .f16{font-size: 16px;}
+  .f12{font-size: 12px;}
+  .red{color: red;}
+&amp;lt;/style&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;ul class=&quot;numberList f12&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList f16&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList f12 red&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;总的来说，方案二和三都不错，方案二调用简单，方案三代码精简。但是如果我们有添加一个numberList4的话，情况会发生什么改变呢？&lt;/p&gt;
+
+&lt;p&gt;对于方案二：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+  .numberList{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList li{height: 20px; line-height: 20px}
+  .f16{font-size: 16px;}
+  .f12{font-size: 12px;}
+  .red{color: red;}
+&amp;lt;/style&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;ul class=&quot;numberList &quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList2&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList3&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList4&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于方案三：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+  .numberList1,.numberList2,.numberList3,.numberList4{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList1 li,.numberList2 li,.numberList3 li,.numberList4 li{height: 20px; line-height: 20px; font-size: 12px;}
+  .numberList2 li,.numberList4 li{font-size: 16px;}
+  .numberList3 li,.numberList4 li{font-size: 12px; color: red;}
+&amp;lt;/style&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;ul class=&quot;numberList f12&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList f16&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList f12 red&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+  &amp;lt;ul class=&quot;numberList f16 red&quot;&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;11111111&amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看出方案三比方案二改起来方便不要太多，只需要在html中加上一个ul，并且加上适当的类名就可以了，而方案二还需要在css中改动几处，这样也容易出错。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在面向对象编程里，有类似的情况：继承和组合。&lt;strong&gt;继承&lt;/strong&gt;的思路是将一个复杂且包含变化的类，拆分成几个复杂但是稳定的子类。&lt;strong&gt;组合&lt;/strong&gt;的思路是讲一个复杂的类分成容易产生变化的部分和相对稳定的部分。
+使用继承的话，任何一点小的变化也需要重新定义一个类，很容易引起类的爆炸式增长，所以在面向对象编程里，有个很重要的原则就是“&lt;strong&gt;多用组合，少用继承&lt;/strong&gt;”。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;（三）低权重原则——避免滥用子选择器&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;css权重的规则：
+  标签：1，    类：10，   id：100,
+  如果权重相同，样式遵循就近原则。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;为了保证样式容易被覆盖，提高可维护性，css选择符需保证权重尽可能低。所以，除非确定HTML结构非常稳定，一定不会再修改，否则尽量不要使用子选择器。&lt;/p&gt;
+
+&lt;h3 id=&quot;css-sprite&quot;&gt;（四）CSS sprite&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CSS sprite： 将多张背景图片合并到一张大图上，然后利用background-position属相来展示需要的部分。&lt;/p&gt;
+
+  &lt;p&gt;优点：大大减少网页的HTTP请求数，减小服务器压力。&lt;/p&gt;
+
+  &lt;p&gt;缺点：&lt;/p&gt;
+
+  &lt;ul&gt;
+    &lt;li&gt;图片的位置精确程度要求非常高，在制作网页时，我们需要精确测量坐标，还需要考虑如何让图案尽可能密集地排列，影响开发速度。&lt;/li&gt;
+    &lt;li&gt;大图中每个小图的坐标值都不可轻易改动，因为每改动一个小图，都能影响到周边的其他图片，大大降低了可维护性。&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;关于 CSS sprite，需要注意几点:&lt;/p&gt;
+
+&lt;p&gt;1、它能合并的只能是用于背景的图片，对于&lt;code&gt;&amp;lt;img src=&quot;&quot;/&amp;gt;&lt;/code&gt;设置的图片，是不能够合并到大图的，会影响页面的可读性。&lt;/p&gt;
+
+&lt;p&gt;2、对于横向和纵向都平铺的图片，也不能使用。&lt;/p&gt;
+
+&lt;h3 id=&quot;css-hack&quot;&gt;（五）CSS hack&lt;/h3&gt;
+&lt;p&gt;1、IE条件注释法&lt;/p&gt;
+
+&lt;p&gt;下面这个例子是针对不同的IE版本分别导入样式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- 只在IE6情况下加载 --&amp;gt;
+&amp;lt;!-- [if IE 6]&amp;gt;
+  &amp;lt;link rel=&quot;stylesheet&quot; href=&quot;ie6.css&quot;&amp;gt;
+&amp;lt;![endif] --&amp;gt;
+&amp;lt;!-- 只在版本号大于7情况下加载 --&amp;gt;
+&amp;lt;!-- [if gt IE 7]&amp;gt;
+  &amp;lt;link rel=&quot;stylesheet&quot; href=&quot;ie7.css&quot;&amp;gt;
+&amp;lt;![endif] --&amp;gt;--------
+&amp;lt;!-- 只在版本号大于8情况下加载 --&amp;gt;
+&amp;lt;!-- [if gt IE 8]&amp;gt;
+  &amp;lt;link rel=&quot;stylesheet&quot; href=&quot;ie8.css&quot;&amp;gt;
+&amp;lt;![endif] --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;lte:小于等于&lt;/p&gt;
+
+&lt;p&gt;gte:大于等于&lt;/p&gt;
+
+&lt;p&gt;gt:大于&lt;/p&gt;
+
+&lt;p&gt;！:不等于&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;事实上，虽然条件注释最常用于CSS的hack，但它能包含的内容还可以是&lt;code&gt;&amp;lt;scipt&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;。从上面的例子可以看出，虽然它的向后兼容是最好的，但是它的缺点也是非常明显：将同意CSS选择符下的样式分散到三个文件中去控制，增加了开发和维护成本。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;2、选择符前缀法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+  .test{width:80px;}           /*IE6，IE7，IE8*/
+  *html .test{width: 60px;}    /*only for IE6*/
+  *+html .test{width: 70px;}   /*only for IE7*/
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;选择符前缀法的原理是在CSS选择符前加一些只有特定浏览器才能识别的前缀，从而让某样式只对特定浏览器生效。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;选择符前缀法相比于IE条件注释法来说，样式可以集中起来，可维护性强了很多。但是不能保证以后IE9，IE10不能识别&lt;em&gt;html和&lt;/em&gt;+html，向后兼容性上存在一点风险。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3、样式属性前缀法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+  .test{width: 80px; *width: 70px; _width:60px;}
+&amp;lt;/style&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;样式属性前缀法是在样式的属性名前加前缀，这些前缀只有在特定浏览器下才生效。例如”_“只在IE6下生效，”*“只在IE6和IE7下生效。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;样式属性前缀法比选择符前缀法聚合度更高，代码更精简，可维护性很强，但是和选择符前缀法一样，它在向后兼容性上存在风险。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;（六）居中&lt;/h3&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;1、水平居中&lt;/h4&gt;
+
+&lt;p&gt;1） 文本、图片等行内元素的水平居中&lt;/p&gt;
+
+&lt;p&gt;父元素设置&lt;code&gt;text-align:center&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;2） 确定宽度的块级元素的水平居中&lt;/p&gt;
+
+&lt;p&gt;设置&lt;code&gt;margin-left:auto; margin-right:auto&lt;/code&gt;来实现。&lt;/p&gt;
+
+&lt;p&gt;3） 不确定宽度的块级元素的水平居中&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;方法一&lt;/strong&gt;：用table标签来帮助实现。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;table本身并不是块级元素，如果不给它设置宽度的话，他的宽度由内部元素的宽度“撑起”，但即使不设置它的宽度，仅设置&lt;code&gt;margin-left:auto; margin-right:auto&lt;/code&gt;就可以实现水平居中。&lt;strong&gt;缺点&lt;/strong&gt;是增加了无语义标签，加深了标签的嵌套层数。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+  ul {list-style: none;margin: 0;padding: 0;}
+  li{float: left;display: inline;margin-right: 5px;}
+  table{margin: 0 auto;}
+  a {width: 20px;height: 20px;text-align: center;background: red;float: left;} /*float:left相当于display:inline-block*/
+&amp;lt;/style&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;table&amp;gt;&amp;lt;tr&amp;gt;&amp;lt;td&amp;gt;&amp;lt;ul&amp;gt;
+    &amp;lt;li&amp;gt;
+      &amp;lt;a href=&quot;#&quot;&amp;gt;1&amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;
+      &amp;lt;a href=&quot;#&quot;&amp;gt;2&amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;&amp;lt;/td&amp;gt;&amp;lt;/tr&amp;gt;&amp;lt;/table&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;方法二&lt;/strong&gt;：改变块元素display为inline，然后再使用&lt;code&gt;text-align:center&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;相比于方法一，它的好处是不用增加无语义的标签，简化嵌套，但是他也存在一些问题：将块级元素变成行内元素，就会少一些功能，比如说设置宽高，在某些特殊需求CSS设置中，可能带来一些限制。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+  ul {list-style: none;margin: 0;padding: 0;}
+  .test {text-align: center;}
+  .test li{display: inline;}
+  a {padding: 2px 6px;text-align: center;background: red;}/* 行内元素嵌套的元素也必须是行内元素*/
+&amp;lt;/style&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;ul class=&quot;test&quot;&amp;gt;
+    &amp;lt;li&amp;gt;
+      &amp;lt;a href=&quot;#&quot;&amp;gt;1&amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;
+      &amp;lt;a href=&quot;#&quot;&amp;gt;2&amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;方法三&lt;/strong&gt;：设置&lt;code&gt;position:relative&lt;/code&gt;和left&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;通过给父元素设置float,然后父元素设置&lt;code&gt;position:relative&lt;/code&gt;和&lt;code&gt;left:50%&lt;/code&gt;，子元素设置&lt;code&gt;positin:relative&lt;/code&gt;和&lt;code&gt;left:-50%&lt;/code&gt;来实现水平居中。它可以保留块级元素仍以display:block的形式显示，而且不会添加无语义标签，但是它的缺点是&lt;code&gt;position:relative&lt;/code&gt;带来一定的副作用。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;style&amp;gt;
+  ul {list-style: none;margin: 0;padding: 0;}
+  .test {clear: both;float:left;position: relative;left: 50%;}
+  .test li{float: left;display: inline;margin-right: 5px;position: relative;left: -50%;}
+  a {float: left;width: 20px;height: 20px;text-align: center;background: red;}
+&amp;lt;/style&amp;gt;
+&amp;lt;body&amp;gt;
+  &amp;lt;ul class=&quot;test&quot;&amp;gt;
+    &amp;lt;li&amp;gt;
+      &amp;lt;a href=&quot;#&quot;&amp;gt;1&amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;
+      &amp;lt;a href=&quot;#&quot;&amp;gt;2&amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+  &amp;lt;/ul&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;2、竖直居中&lt;/h4&gt;
+
+&lt;p&gt;1）父元素高度不确定的文本、图片、块级元素的竖直居中&lt;/p&gt;
+
+&lt;p&gt;给父元素设置相同的上下边距padding&lt;/p&gt;
+
+&lt;p&gt;2）父元素高度确定的单行文本的竖直居中&lt;/p&gt;
+
+&lt;p&gt;给父元素设置line-height来实现，让line-height等于父元素的高度&lt;/p&gt;
+
+&lt;p&gt;3）父元素高度确定的多行文本、图片、块级元素的竖直居中&lt;/p&gt;
+
+&lt;p&gt;持续更新中……&lt;/p&gt;
+</description>
+        <pubDate>Sat, 29 Aug 2015 00:00:00 +0800</pubDate>
+        <link>/2015/08/29/Writing-Solid-Web-Front-end-Code/</link>
+        <guid isPermaLink="true">/2015/08/29/Writing-Solid-Web-Front-end-Code/</guid>
+        
+        
+        <category>html</category>
+        
+        <category>css</category>
+        
+      </item>
+    
+      <item>
+        <title>github pages 创建个人博客</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;序&lt;/h2&gt;
+
+&lt;p&gt;从实习之后，一直想建立一个个人博客，然而由于个人的拖延症，一直到今天。嘛~ 所以开始还是说一说怎么使用github pages 建立个人博客吧。（ps：吐槽一下，用了两个月Mac之后发现Windows好难用~~）&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;github-pageshttpspagesgithubcom&quot;&gt;为什么要用&lt;a href=&quot;https://pages.github.com&quot;&gt;github pages&lt;/a&gt;&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;搭建简单而且免费；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;支持静态脚本；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;可以绑定你的域名；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;DIY自由发挥，动手实践一些有意思的东西git,markdown,bootstrap,jekyll；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;理想写博环境，git+github+markdown+jekyll；&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;github-pages-&quot;&gt;github pages 两种模式&lt;/h2&gt;
+
+&lt;h3 id=&quot;userorganization-pages-&quot;&gt;User/Organization Pages 个人或公司站点&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;己的用户名，每个用户名下面只能建立一个；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;命名必须符合这样的规则username/username.github.com；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;主干上内容被用来构建和发布页面&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;project-pages-&quot;&gt;Project Pages 项目站点&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;gh-pages分支用于构建和发布；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果user/org pages使用了独立域名，那么托管在账户下的所有project pages将使用相同的域名进行重定向，除非project pages使用了自己的独立域名；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;如果没有使用独立域名，project pages将通过子路径的形式提供服务username.github.com/projectname；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;自定义404页面只能在独立域名下使用，否则会使用User Pages 404；&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;第一种模式相当简单，按照&lt;a href=&quot;https://pages.github.com&quot;&gt;github pages&lt;/a&gt;步骤做就可以了，还可以选择默认的模板，瞬间blingbling。接下来看一下第二种模式的步骤。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;project-pages&quot;&gt;Project Pages搭建过程&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装Ruby&lt;/p&gt;
+
+    &lt;p&gt;前往 &lt;a href=&quot;http://rubyinstaller.org/downloads/&quot;&gt;http://rubyinstaller.org/downloads/&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;在 “RubyInstallers” 部分，选择某个版本点击下载。
+例如， Ruby 2.0.0-p451 (x64) 是适于64位 Windows 机器上的 Ruby 2.0.0 x64 安装包。安装后配置环境变量你懂得……&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装 DevKit&lt;/p&gt;
+
+    &lt;p&gt;再次前往 &lt;a href=&quot;http://rubyinstaller.org/downloads/&quot;&gt;http://rubyinstaller.org/downloads/&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;下载同系统及 Ruby 版本相对应的 DevKit 安装包。&lt;/p&gt;
+
+    &lt;p&gt;运行安装包并解压缩至某文件夹，如 C:\DevKit&lt;/p&gt;
+
+    &lt;p&gt;通过初始化来创建 &lt;code&gt;config.yml&lt;/code&gt; 文件。在命令行窗口内，输入下列命令：&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;markdown&quot;&gt;
+ cd “C:\DevKit”
+ ruby dk.rb init
+ notepad config.yml
+ &lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;在打开的记事本窗口中，于末尾添加新的一行 - &lt;code&gt;C:\Ruby200-x64&lt;/code&gt;，保存文件并退出。&lt;/p&gt;
+
+    &lt;p&gt;回到命令行窗口内，审查（非必须）并安装。&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;markdown&quot;&gt;
+ ruby dk.rb review
+ ruby dk.rb install
+ &lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装gem&lt;/p&gt;
+
+    &lt;p&gt;Ruby里面自带gem，由于国内的网络，gem官方的源基本上是没法用了,参考&lt;a href=&quot;http://ruby.taobao.org/&quot;&gt;taobao镜像&lt;/a&gt;。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;安装jekyll&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;markdown&quot;&gt;gem install jekyll&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;搭建网络目录&lt;/p&gt;
+
+    &lt;p&gt;在github上新建一个项目比如叫&lt;code&gt;myBlog&lt;/code&gt;，本地pull下来之后新建&lt;code&gt;gh-pages&lt;/code&gt;分支，然后按照下面的目录在myBlog文件夹下搭建网络目录。&lt;/p&gt;
+    &lt;pre&gt;&lt;code class=&quot;markdown&quot;&gt;
+ |—— _config.yml
+ |—— _includes
+ |—— _layouts
+ |   |—— default.html
+ |   |—— post.html
+ |—— _posts
+ |   |—— 20011-10-25-open-source-is-good.html
+ |   |—— 20011-04-26-hello-world.html
+ |—— _site
+ |—— index.html
+ |—— assets
+ |   |—— css
+ |      |—— style.css
+ |   |—— javascripts
+ &lt;/code&gt;&lt;/pre&gt;
+
+    &lt;p&gt;具体文件内容和样例可以参考&lt;a href=&quot;http://www.pchou.info/web-build/2013/01/07/build-github-blog-page-05.html&quot;&gt;http://www.pchou.info/web-build/2013/01/07/build-github-blog-page-05.html&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;搭建完之后在该目录下运行&lt;/p&gt;
+    &lt;pre&gt;&lt;code class=&quot;markdown&quot;&gt;jekyll server&lt;/code&gt;&lt;/pre&gt;
+    &lt;p&gt;成功后就可以在&lt;a href=&quot;http://localhost:4000/&quot;&gt;http://localhost:4000/&lt;/a&gt;中查看效果了&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;发布&lt;/p&gt;
+
+    &lt;p&gt;博客写好之后，直接push到myBlog远程gh-pages分支就可以了，随后查看&lt;a href=&quot;https://mirandachen1992.github.io/myBlog/&quot;&gt;https://mirandachen1992.github.io/myBlog/&lt;/a&gt;(这里要替换成自己的用户名和项目名称哦~)，完成bingo!&lt;/p&gt;
+
+    &lt;p&gt;当然你也可以下载别人的模板进行使用，如果有空的话自己写一个模板也是很有意思的事情呢~~~&lt;/p&gt;
+
+    &lt;p&gt;&lt;strong&gt;本模板来源:  Jekyll theme by &lt;a href=&quot;https://github.com/Gaohaoyang/gaohaoyang.github.io&quot;&gt;Gaohaoyang&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Fri, 21 Aug 2015 23:14:54 +0800</pubDate>
+        <link>/2015/08/21/gitbub-pages/</link>
+        <guid isPermaLink="true">/2015/08/21/gitbub-pages/</guid>
+        
+        
+        <category>githubpages</category>
+        
+      </item>
+    
+  </channel>
+</rss>

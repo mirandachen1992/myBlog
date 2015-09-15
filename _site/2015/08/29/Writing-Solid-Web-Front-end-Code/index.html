@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>《编写高质量代码》（一）HTML、CSS 部分</title>
+	<meta name="description" content="开始说几句最近在看《编写高质量代码–Web前端开发修炼之道》(曹刘阳 著)，内容有点老了，但是中间有部分内容是我平时没有注意到或者没有深入理解的，所以用这两篇先总结一下个人觉得平时用的比较多又比较容易出错的部分。Smile ^_^~">
+	
+	<link rel="canonical" href="/2015/08/29/Writing-Solid-Web-Front-end-Code/">
+	<link rel="alternate" type="application/rss+xml" title="Mirandachen1992" href="/feed.xml" />
+	
+	<!-- <link rel="stylesheet" href="/css/main.css"> -->
+
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/fontawesome/4.2.0/css/font-awesome.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+	
+
+	<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+	
+	<!-- <script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.min.js"></script> -->
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="/static/js/index.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai_sublime.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/railscasts.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/highlight.js/8.4/styles/monokai.min.css"> -->
+	<!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/languages/dos.min.js"></script> -->
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/highlight.js/8.4/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?b636473d6ffa17615f94e5db1459ea81";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+</head>
+
+ <!--  <body data-spy="scroll" data-target="#myAffix"> -->
+  <body>
+
+    <header>
+
+<!-- navbar -->
+  <nav class="navbar navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Mirandachen1992</a>
+      <p class="navbar-text">Front-end Dev Engineer</p>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+
+        
+          <li>
+        
+          <a href="/"><span class="glyphicon glyphicon-th-large"></span> Blog</a></li>
+
+        
+          
+            
+              <li>
+            
+            <a href="/demo/"><span class="glyphicon glyphicon-play"></span> Demo</a></li>
+          
+        
+          
+            
+              <li>
+            
+            <a href="/about/"><span class="glyphicon glyphicon-heart"></span> About</a></li>
+          
+        
+          
+        
+          
+        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+</header>
+
+
+    <div id="main" class="container main">
+      <div class="row">
+  <div id="myArticle" class="col-sm-9">
+    <div class="post-area post">
+      <header>
+        <h1>《编写高质量代码》（一）HTML、CSS 部分</h1>
+        <p>Aug 29, 2015</p>
+      </header>
+      <hr>
+      <article>
+        <h2 id="section">开始说几句</h2>
+<p>最近在看《编写高质量代码–Web前端开发修炼之道》(曹刘阳 著)，内容有点老了，但是中间有部分内容是我平时没有注意到或者没有深入理解的，所以用这两篇先总结一下个人觉得平时用的比较多又比较容易出错的部分。Smile ^_^~</p>
+
+<hr />
+
+<h3 id="css">（一）CSS的命名</h3>
+
+<p>css的命名一般有两种方式驼峰式timeList和划线式time-list/time_List。书中作者认为比较好的方法是：驼峰命名法用于区别不同单词，划线用于表明从属关系。如：</p>
+
+<pre><code>&lt;ul class="timeList"&gt;
+  &lt;li class="timeList-firstItem"&gt;&lt;/li&gt;
+  &lt;li class="timeList-secondItem"&gt;&lt;/li&gt;
+  &lt;li class="timeLIst-LastItem"&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<h3 id="classclass----">（二）挂多个class还是新建class – 多用组合，少用继承</h3>
+
+<p>加入我们想得到下图</p>
+
+<p><img src="/css/pics/2015-8-29(1).PNG" alt="2015-8-29(1)" /></p>
+
+<p><strong>方案一</strong>：分别视为三种不同的类，代码冗余</p>
+
+<pre><code>&lt;style&gt;
+  .numberList1{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList1 li{height: 20px; line-height: 20px; font-size: 12px;}
+  .numberList2{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList2 li{height: 20px; line-height: 20px; font-size: 16px;}
+  .numberList3{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList3 li{height: 20px; line-height: 20px; font-size: 12px; color: red;}
+&lt;/style&gt;
+&lt;body&gt;
+  &lt;ul class="numberList1"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList2"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList3"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p><strong>方案二</strong>：与方案一的思路相同，只是想样式相同的部分提取出来</p>
+
+<pre><code>&lt;style&gt;
+  .numberList1,.numberList2,.numberList3{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList1 li,.numberList2 li,.numberList3 li{height: 20px; line-height: 20px; font-size: 12px;}
+  .numberList2 li{font-size: 16px;}
+  .numberList3 li{font-size: 12px; color: red;}
+&lt;/style&gt;
+&lt;body&gt;
+  &lt;ul class="numberList1"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList2"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList3"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p><strong>方案三</strong>:提取出更多粒度更小的类，通过类的组合实现</p>
+
+<pre><code>&lt;style&gt;
+  .numberList{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList li{height: 20px; line-height: 20px}
+  .f16{font-size: 16px;}
+  .f12{font-size: 12px;}
+  .red{color: red;}
+&lt;/style&gt;
+&lt;body&gt;
+  &lt;ul class="numberList f12"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList f16"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList f12 red"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>总的来说，方案二和三都不错，方案二调用简单，方案三代码精简。但是如果我们有添加一个numberList4的话，情况会发生什么改变呢？</p>
+
+<p>对于方案二：</p>
+
+<pre><code>&lt;style&gt;
+  .numberList{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList li{height: 20px; line-height: 20px}
+  .f16{font-size: 16px;}
+  .f12{font-size: 12px;}
+  .red{color: red;}
+&lt;/style&gt;
+&lt;body&gt;
+  &lt;ul class="numberList "&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList2"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList3"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList4"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>对于方案三：</p>
+
+<pre><code>&lt;style&gt;
+  .numberList1,.numberList2,.numberList3,.numberList4{border:1px solid #ccc; padding: 10px; list-style-type: none;}
+  .numberList1 li,.numberList2 li,.numberList3 li,.numberList4 li{height: 20px; line-height: 20px; font-size: 12px;}
+  .numberList2 li,.numberList4 li{font-size: 16px;}
+  .numberList3 li,.numberList4 li{font-size: 12px; color: red;}
+&lt;/style&gt;
+&lt;body&gt;
+  &lt;ul class="numberList f12"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList f16"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList f12 red"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ul class="numberList f16 red"&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+    &lt;li&gt;11111111&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>可以看出方案三比方案二改起来方便不要太多，只需要在html中加上一个ul，并且加上适当的类名就可以了，而方案二还需要在css中改动几处，这样也容易出错。</p>
+
+<blockquote>
+  <p>在面向对象编程里，有类似的情况：继承和组合。<strong>继承</strong>的思路是将一个复杂且包含变化的类，拆分成几个复杂但是稳定的子类。<strong>组合</strong>的思路是讲一个复杂的类分成容易产生变化的部分和相对稳定的部分。
+使用继承的话，任何一点小的变化也需要重新定义一个类，很容易引起类的爆炸式增长，所以在面向对象编程里，有个很重要的原则就是“<strong>多用组合，少用继承</strong>”。</p>
+</blockquote>
+
+<h3 id="section-1">（三）低权重原则——避免滥用子选择器</h3>
+
+<blockquote>
+  <p>css权重的规则：
+  标签：1，    类：10，   id：100,
+  如果权重相同，样式遵循就近原则。</p>
+</blockquote>
+
+<p>为了保证样式容易被覆盖，提高可维护性，css选择符需保证权重尽可能低。所以，除非确定HTML结构非常稳定，一定不会再修改，否则尽量不要使用子选择器。</p>
+
+<h3 id="css-sprite">（四）CSS sprite</h3>
+
+<blockquote>
+  <p>CSS sprite： 将多张背景图片合并到一张大图上，然后利用background-position属相来展示需要的部分。</p>
+
+  <p>优点：大大减少网页的HTTP请求数，减小服务器压力。</p>
+
+  <p>缺点：</p>
+
+  <ul>
+    <li>图片的位置精确程度要求非常高，在制作网页时，我们需要精确测量坐标，还需要考虑如何让图案尽可能密集地排列，影响开发速度。</li>
+    <li>大图中每个小图的坐标值都不可轻易改动，因为每改动一个小图，都能影响到周边的其他图片，大大降低了可维护性。</li>
+  </ul>
+</blockquote>
+
+<p>关于 CSS sprite，需要注意几点:</p>
+
+<p>1、它能合并的只能是用于背景的图片，对于<code>&lt;img src=""/&gt;</code>设置的图片，是不能够合并到大图的，会影响页面的可读性。</p>
+
+<p>2、对于横向和纵向都平铺的图片，也不能使用。</p>
+
+<h3 id="css-hack">（五）CSS hack</h3>
+<p>1、IE条件注释法</p>
+
+<p>下面这个例子是针对不同的IE版本分别导入样式</p>
+
+<pre><code>&lt;!-- 只在IE6情况下加载 --&gt;
+&lt;!-- [if IE 6]&gt;
+  &lt;link rel="stylesheet" href="ie6.css"&gt;
+&lt;![endif] --&gt;
+&lt;!-- 只在版本号大于7情况下加载 --&gt;
+&lt;!-- [if gt IE 7]&gt;
+  &lt;link rel="stylesheet" href="ie7.css"&gt;
+&lt;![endif] --&gt;--------
+&lt;!-- 只在版本号大于8情况下加载 --&gt;
+&lt;!-- [if gt IE 8]&gt;
+  &lt;link rel="stylesheet" href="ie8.css"&gt;
+&lt;![endif] --&gt;
+</code></pre>
+
+<p>lte:小于等于</p>
+
+<p>gte:大于等于</p>
+
+<p>gt:大于</p>
+
+<p>！:不等于</p>
+
+<blockquote>
+  <p>事实上，虽然条件注释最常用于CSS的hack，但它能包含的内容还可以是<code>&lt;scipt&gt;&lt;/script&gt;</code>。从上面的例子可以看出，虽然它的向后兼容是最好的，但是它的缺点也是非常明显：将同意CSS选择符下的样式分散到三个文件中去控制，增加了开发和维护成本。</p>
+</blockquote>
+
+<p>2、选择符前缀法</p>
+
+<pre><code>&lt;style&gt;
+  .test{width:80px;}           /*IE6，IE7，IE8*/
+  *html .test{width: 60px;}    /*only for IE6*/
+  *+html .test{width: 70px;}   /*only for IE7*/
+&lt;/style&gt;
+</code></pre>
+
+<p>选择符前缀法的原理是在CSS选择符前加一些只有特定浏览器才能识别的前缀，从而让某样式只对特定浏览器生效。</p>
+
+<blockquote>
+  <p>选择符前缀法相比于IE条件注释法来说，样式可以集中起来，可维护性强了很多。但是不能保证以后IE9，IE10不能识别<em>html和</em>+html，向后兼容性上存在一点风险。</p>
+</blockquote>
+
+<p>3、样式属性前缀法</p>
+
+<pre><code>&lt;style&gt;
+  .test{width: 80px; *width: 70px; _width:60px;}
+&lt;/style&gt;
+</code></pre>
+
+<p>样式属性前缀法是在样式的属性名前加前缀，这些前缀只有在特定浏览器下才生效。例如”_“只在IE6下生效，”*“只在IE6和IE7下生效。</p>
+
+<blockquote>
+  <p>样式属性前缀法比选择符前缀法聚合度更高，代码更精简，可维护性很强，但是和选择符前缀法一样，它在向后兼容性上存在风险。</p>
+</blockquote>
+
+<h3 id="section-2">（六）居中</h3>
+
+<h4 id="section-3">1、水平居中</h4>
+
+<p>1） 文本、图片等行内元素的水平居中</p>
+
+<p>父元素设置<code>text-align:center</code>。</p>
+
+<p>2） 确定宽度的块级元素的水平居中</p>
+
+<p>设置<code>margin-left:auto; margin-right:auto</code>来实现。</p>
+
+<p>3） 不确定宽度的块级元素的水平居中</p>
+
+<ul>
+  <li><strong>方法一</strong>：用table标签来帮助实现。</li>
+</ul>
+
+<p>table本身并不是块级元素，如果不给它设置宽度的话，他的宽度由内部元素的宽度“撑起”，但即使不设置它的宽度，仅设置<code>margin-left:auto; margin-right:auto</code>就可以实现水平居中。<strong>缺点</strong>是增加了无语义标签，加深了标签的嵌套层数。</p>
+
+<pre><code>&lt;style&gt;
+  ul {list-style: none;margin: 0;padding: 0;}
+  li{float: left;display: inline;margin-right: 5px;}
+  table{margin: 0 auto;}
+  a {width: 20px;height: 20px;text-align: center;background: red;float: left;} /*float:left相当于display:inline-block*/
+&lt;/style&gt;
+&lt;body&gt;
+  &lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;ul&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;1&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;2&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/body&gt;
+</code></pre>
+
+<ul>
+  <li><strong>方法二</strong>：改变块元素display为inline，然后再使用<code>text-align:center</code></li>
+</ul>
+
+<p>相比于方法一，它的好处是不用增加无语义的标签，简化嵌套，但是他也存在一些问题：将块级元素变成行内元素，就会少一些功能，比如说设置宽高，在某些特殊需求CSS设置中，可能带来一些限制。</p>
+
+<pre><code>&lt;style&gt;
+  ul {list-style: none;margin: 0;padding: 0;}
+  .test {text-align: center;}
+  .test li{display: inline;}
+  a {padding: 2px 6px;text-align: center;background: red;}/* 行内元素嵌套的元素也必须是行内元素*/
+&lt;/style&gt;
+&lt;body&gt;
+  &lt;ul class="test"&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;1&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;2&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+</code></pre>
+
+<ul>
+  <li><strong>方法三</strong>：设置<code>position:relative</code>和left</li>
+</ul>
+
+<p>通过给父元素设置float,然后父元素设置<code>position:relative</code>和<code>left:50%</code>，子元素设置<code>positin:relative</code>和<code>left:-50%</code>来实现水平居中。它可以保留块级元素仍以display:block的形式显示，而且不会添加无语义标签，但是它的缺点是<code>position:relative</code>带来一定的副作用。</p>
+
+<pre><code>&lt;style&gt;
+  ul {list-style: none;margin: 0;padding: 0;}
+  .test {clear: both;float:left;position: relative;left: 50%;}
+  .test li{float: left;display: inline;margin-right: 5px;position: relative;left: -50%;}
+  a {float: left;width: 20px;height: 20px;text-align: center;background: red;}
+&lt;/style&gt;
+&lt;body&gt;
+  &lt;ul class="test"&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;1&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;2&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+</code></pre>
+
+<h4 id="section-4">2、竖直居中</h4>
+
+<p>1）父元素高度不确定的文本、图片、块级元素的竖直居中</p>
+
+<p>给父元素设置相同的上下边距padding</p>
+
+<p>2）父元素高度确定的单行文本的竖直居中</p>
+
+<p>给父元素设置line-height来实现，让line-height等于父元素的高度</p>
+
+<p>3）父元素高度确定的多行文本、图片、块级元素的竖直居中</p>
+
+<p>持续更新中……</p>
+
+      </article>
+      <hr>
+      <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a><a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+      <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+    </div>
+    <div class="post-area post comment">
+      <!-- 多说评论框 start -->
+      
+      <div class="ds-thread" data-thread-key="/2015/08/29/Writing-Solid-Web-Front-end-Code" data-title="《编写高质量代码》（一）HTML、CSS 部分" data-url="mirandachen1992.github.io/2015/08/29/Writing-Solid-Web-Front-end-Code/"></div>
+      
+      <!-- 多说评论框 end -->
+    </div>
+  </div>
+
+  <div id="content" class="col-sm-3">
+    <!-- <div id="myAffix" class="shadow-bottom-center hidden-xs" data-spy="affix" data-offset-top="0" data-offset-bottom="-20"> -->
+    <div id="myAffix" class="shadow-bottom-center hidden-xs" >
+      <div class="categories-list-header">
+        Content
+      </div>
+      <div class="content-text"></div>
+    </div>
+  </div>
+</div>
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left" title="回到顶部">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+    <footer class="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <a href="mailto:15251857675@163.com"><span class="glyphicon glyphicon-envelope"></span> 15251857675@163.com</a>
+        <span class="point"> · </span>
+        
+          
+          <a href="https://github.com/mirandachen1992">
+            <span class="icon">
+              <svg viewBox="0 0 16 16">
+                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+              </svg>
+            </span>
+            Github
+            <!-- <span>mirandachen1992</span> -->
+          </a>
+          
+          
+          <span class="point"> · </span>
+          <span><a href="/feed.xml">RSS</a></span>
+          <span class="point"> · </span>
+          <span>陈泳瑾的博客</span>
+          <span class="point"> · </span>
+          <span>&copy; 2015 Mirandachen</span>
+          <span class="point"> · </span>
+          <span>Designed by <a href="https://github.com/mirandachen1992">mirandachen1992</a></span>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"hygblog"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+<!-- 多说公共JS代码 end -->
+
+<!-- 在新窗口中打开 -->
+  <script type="text/javascript">
+    function addBlankTargetForLinks () {
+      $('a[href^="http"]').each(function(){
+          $(this).attr('target', '_blank');
+      });
+    }
+    $(document).bind('DOMNodeInserted', function(event) {
+      addBlankTargetForLinks();
+    });
+  </script>
+  </body>
+</html>
