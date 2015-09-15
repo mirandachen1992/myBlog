@@ -123,3 +123,6 @@ categories: githubPages
 	博客写好之后，直接push到myBlog远程gh-pages分支就可以了，随后查看[https://mirandachen1992.github.io/myBlog/](https://mirandachen1992.github.io/myBlog/)(这里要替换成自己的用户名和项目名称哦~)，完成bingo!
 
 	当然你也可以下载别人的模板进行使用，如果有空的话自己写一个模板也是很有意思的事情呢~~~
+
+
+	**本模板来源:  Jekyll theme by [Gaohaoyang](https://github.com/Gaohaoyang/gaohaoyang.github.io)**
